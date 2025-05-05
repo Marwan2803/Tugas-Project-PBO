@@ -1,26 +1,17 @@
-package sesi_2.Mahasiswa; // package ini untuk menentukan folder apa yang dipaakai
+import model.*;
+import service.PetService;
 
-class Mahasiswa { // pembuatan class dengan nama class Mahasiswa
-    String nama; // deklarasi variabel nama tanpa dinisialisasi
+public class Main {
+    public static void main(String[] args) {
+        PetService<Pet> petService = new PetService<>();
 
-    Mahasiswa(String nama) { // constructor dengan parameter nama bertipe data string
-        this.nama = nama; // pengisialisasian objek nama dengan parameter nama
-    }
+        Dog dog = new Dog("Buddy", 3);
+        Cat cat = new Cat("Whiskers", 2);
 
-    void perkenalkanDiri() { // deklarasi method dengan nama method perkenalkanDiri
-        System.out.println("Halo, nama saya " + this.nama); // menampilkan "Halo, nama saya 'nama yang dimasukkan'"
-    }
-}
+        petService.addPet(dog);
+        petService.addPet(cat);
 
-public class Main { // deklarasi main class yang harus ada
-    public static void main(String[] args) { // ini juga sama deklarasi fungsi yang harus ada
-        Mahasiswa mhs = new Mahasiswa("Budi"); // proses pembuatan objek mhs dari class Mahasiswa
-        mhs.perkenalkanDiri(); // pemanggilan method perkenalkanDiri yang akan menampilkan "Halo, nama saya
-                               // Budi"
+        petService.showAll();
+        dog.train();
     }
 }
-
-// Tujuan dari program ini adalah pembuatan class atau cetak biru mahasiswa agar
-// kita tidak perlu menulis ulang kode yang sama
-// Lalu kalau di program ini itu hanya untuk menjalankan method yang ada pada
-// class Mahasiswa saja, yaitu method perkenalkanDiri
